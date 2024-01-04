@@ -50,15 +50,14 @@ async function validateToken(ip, token) {
 }
 
 async function forwardMessage(name, email, subject, message) {
-    console.error("test");
     const mailchannelsEndpoint = "https://api.mailchannels.net/tx/v1/send";
     const mailBody = JSON.stringify({
         "personalizations": [{
             "to": [{"email": email, "name": name}]
         }],
         "from": {
-            "email": "business@minhtv.de", // Your verified sender email
-            "name": "Minh Business Seite"
+            "email": "your-sender-email@example.com",
+            "name": "Your Sender Name"
         },
         "subject": subject,
         "content": [{
@@ -74,11 +73,18 @@ async function forwardMessage(name, email, subject, message) {
             body: mailBody
         });
 
-        return response.ok;
+        if (!response.ok) {
+            const errorDetails = await response.text();
+            console.error("MailChannels API error response:", errorDetails);
+            return false;
+        }
+
+        return true;
     } catch (error) {
         console.error("Error sending email through MailChannels:", error);
         return false;
     }
 }
+
 
 

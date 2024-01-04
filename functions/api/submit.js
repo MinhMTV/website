@@ -11,9 +11,10 @@ async function handleRequest({ request }) {
     const ip = request.headers.get("CF-Connecting-IP");
 
     const formData = await request.formData();
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    const name = formData.get("i-fullname");
+    const email = formData.get("i-email");
+    const subject = formData.get("i-subject");
+    const message = formData.get("i-message");
     const token = formData.get("cf-turnstile-response");
 
     const tokenValidated = await validateToken(ip, token);

@@ -24,6 +24,7 @@ async function handleRequest({ request }) {
     }
 
     const sendStatus = await forwardMessage(name, email, subject, message);
+    console.error(sendStatus);
 
     return sendStatus ? new Response("OK", { status: 200 }) : new Response("Error sending email", { status: 500 });
 }
@@ -49,6 +50,7 @@ async function validateToken(ip, token) {
 }
 
 async function forwardMessage(name, email, subject, message) {
+    console.error("test");
     const mailchannelsEndpoint = "https://api.mailchannels.net/tx/v1/send";
     const mailBody = JSON.stringify({
         "personalizations": [{

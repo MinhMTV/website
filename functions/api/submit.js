@@ -1,29 +1,54 @@
-/**
- * POST /api/submit
- */
 export async function onRequestPost(context) {
     try {
-        let input = await context.request.formData();
-
-        // Convert FormData to JSON
-        // NOTE: Allows multiple values per key
-        let output = {};
-        for (let [key, value] of input) {
-            let tmp = output[key];
-            if (tmp === undefined) {
-                output[key] = value;
-            } else {
-                output[key] = [].concat(tmp, value);
-            }
-        }
-
-        let pretty = JSON.stringify(output, null, 2);
-        return new Response(pretty, {
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-            },
-        });
-    } catch (err) {
-        return new Response('Error parsing JSON content', { status: 400 });
+      return await handleRequest(context);
+    } catch (e) {
+      console.error(e);
+      return new Response("Error sending message", { status: 500 });
     }
-}
+  }
+  
+  async function handleRequest({ request }) {
+    const ip = request.headers.get("CF-Connecting-IP");
+  
+    const formData = await request.formData();
+    const name = formData.get("i-name");
+    const email = formData.get("i-email");
+    const subject = formData.get("i-subject");
+    const message = formData.get("i-message");
+    const token = formData.get("cf-turnstile-response");
+  
+    const tokenValidated = await validateToken(ip, token);
+  
+    if (!tokenValidated) {
+      return new Response("Token validation failed", { status: 403 });
+    }
+  
+    await forwardMessage(name, email, message);
+  
+    return new Response("OK", { status: 200 });
+  }
+  
+  async function validateToken(ip, token) {
+    const TURNSTILE_SECRET_KEY = "0x4AAAAAAAPfo1BaRbrUD_6h_iGPVdDt-vo";
+  
+    const formData = new FormData();
+    formData.append("secret", TURNSTILE_SECRET_KEY);
+    formData.append("response", token);
+    formData.append("remoteip", ip);
+  
+    const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  
+    const result = await fetch(url, {
+      body: formData,
+      method: "POST",
+    });
+  
+    const outcome = await result.json();
+  
+    return outcome.success;
+  }
+  
+  async function forwardMessage(name, email, message) {
+    // Forward the message to an email address, webhook etc.
+  }
+  

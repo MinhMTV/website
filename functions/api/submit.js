@@ -10,7 +10,7 @@ export async function onRequestPost(context) {
 
 async function handleRequest({ request }) {
     const ip = request.headers.get("CF-Connecting-IP");
-
+    console.log("test")
     const formData = await request.formData();
     const name = formData.get("i-fullname");
     const email = formData.get("i-email");
@@ -31,7 +31,7 @@ async function handleRequest({ request }) {
 
 async function validateToken(ip, token) {
     const TURNSTILE_SECRET_KEY = "0x4AAAAAAAPfo1BaRbrUD_6h_iGPVdDt-vo";
-
+    console.log("test")
     const formData = new FormData();
     formData.append("secret", TURNSTILE_SECRET_KEY);
     formData.append("response", token);

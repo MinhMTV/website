@@ -23,7 +23,7 @@ export async function onRequestPost(context) {
       return new Response("Token validation failed", { status: 403 });
     }
   
-    await forwardMessage(name, email, message);
+    await forwardMessage(name, email,subject, message);
   
     return new Response("OK", { status: 200 });
   }
@@ -48,7 +48,7 @@ export async function onRequestPost(context) {
     return outcome.success;
   }
   
-  async function forwardMessage(name, email, message) {
+  async function forwardMessage(name, email, subject, message) {
     // Forward the message to an email address, webhook etc.
   }
   

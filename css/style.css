@@ -277,6 +277,15 @@ Animation Keyframes
         transform: translateY(0px);
     }
 }
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 
 /*----------------
 Background Circles
@@ -289,8 +298,6 @@ Background Circles
     width: calc(100% - 30px);
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
-
 }
 .bg-circles div{
     position: absolute;
@@ -318,12 +325,64 @@ Background Circles
     height: 120px;
     width: 120px;
     background-color: var(--white);
-    left: 40%;
-    top: -6%;
-    opacity: 0.4;
-    animation: bounceTop 5s ease-in-out infinite;
+    top: 40%;
+    right: -60px;
+    opacity: 0.6;
 }
-
+.bg-circles .circle-4{
+    height: 50px;
+    width: 50px;
+    background-color: var(--orange);
+    top: 80%;
+    left: -30px;
+    opacity: 0.6;
+}
+/*----------------
+Page Loader
+------------------*/
+.page-loader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--white-alpha-25);
+    backdrop-filter: var(--backgrop-filter-blur);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+}
+.page-loader.fade-out{
+    opacity: 0;
+}
+.page-loader div{
+    border: 2px solid transparent;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    border-top-color:transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spin 1s linear infinite;
+}
+.page-loader div:nth-child(1){
+    height: 60px;
+    width: 60px;
+    border-color: var(--main-color);
+}
+.page-loader div:nth-child(2){
+    height: 45px;
+    width: 45px;
+    border-color: var(--blue);
+    animation-duration: 1.2s;
+}
+.page-loader div:nth-child(3){
+    height: 30px;
+    width: 30px;
+    border-color: var(--orange);
+    animation-duration: 1.2s;
+}
 
 
 /*----------------
@@ -570,7 +629,12 @@ About Section
 
 .about-text {
     width: 60%;
-    padding: 0 15px
+    padding: 0 15px;
+    overflow-wrap: break-word
+}
+.about-text p{
+    width: 100%;
+    padding: 0 15px;
 }
 
 .about-img .img-box {
@@ -830,6 +894,9 @@ Portfolio Section
     text-transform: capitalize;
     margin: 20px 0 15px;
 }
+.pp-body{
+    overflow-wrap: break-word;
+}
 
 .pp-body .description {
     margin-bottom: 20px;
@@ -939,4 +1006,76 @@ Contact Section
 .contact-info-item .social-links a:hover {
     color: var(--white);
     background-color: var(--main-color);
+}
+
+/*----------------
+Responsive
+------------------*/
+@media(max-width:991px) {
+    .container{
+        padding: 0;
+    }
+    .home-text,
+    .home-img{
+        width: 100%;
+    }
+    .home-text{
+        text-align: center;
+    }
+    .home-img{
+        order:-1;
+    }
+    .home-img .img-box{
+        max-width: 300px;
+    }
+    .home-text .btn{
+        margin: 0 7px 15px;
+    }
+    .portfolio-item{
+        width: calc(50% - 30px);
+    }
+}
+@media(max-width:767px) {
+    .contact-form,
+    .contact-info,
+    .about-text,
+    .about-img{
+        width: 100%;
+    }
+    .about-text{
+        margin-top: 30px;
+    }
+    .portfolio-item{
+        width: calc(100% - 30px);
+    }
+    .pp-inner{
+        padding: 30px 15px;
+    }
+    .contact-info{
+        order: -1;
+        margin-bottom: 15px;
+    } 
+    .contact-info-item{
+        padding: 0;
+    } 
+}
+@media(max-width:575px) {
+    .header .nav-inner ul li a{
+        font-size: 35px;
+    }
+    .home-text h1{
+        font-size: 30px;
+    }
+    .home-text h2{
+        font-size: 18px;
+    }
+    .pp-header h3{
+        font-size: 20px;
+    }
+    .pp-body .description p{
+        font-size: small;
+    }
+    .pp-body .general-info ul li{
+        font-size: 10px;
+    }
 }

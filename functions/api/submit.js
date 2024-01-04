@@ -53,10 +53,10 @@ async function forwardMessage(name, email, subject, message) {
     const mailchannelsEndpoint = "https://api.mailchannels.net/tx/v1/send";
     const mailBody = JSON.stringify({
         "personalizations": [{
-            "to": [{"email": email, "name": name}]
+            "to": [{"email": "manminni@yahoo.de", "name": name}]
         }],
         "from": {
-            "email": "your-sender-email@example.com",
+            "email": "minhv90@gmail.com",
             "name": "Your Sender Name"
         },
         "subject": subject,

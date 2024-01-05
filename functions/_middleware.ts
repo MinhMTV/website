@@ -3,14 +3,23 @@ import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 import { PagesFunction } from "@cloudflare/workers-types";
 
 export const onRequest: PagesFunction = mailChannelsPlugin({
-  personalizations: [
-    {
-      to: [{ name: "ACME Support", email: "minhv90@gmail.com" }],
-    },
-  ],
+  personalizations: (data) => {
+    const formData = new URLSearchParams(data.request.body);
+    const email = formData.get("i-email");
+    
+    return [
+    //   {
+    //     to: [{ name: "User", email: email }],
+    //   },
+      // Your hardcoded email
+      {
+        to: [{ name: "test", email: "minht@web.de"}],
+      }
+    ];
+  },
   from: {
-    name: "ACME Support",
-    email: "minhv90@gmail.com",
+    name: "Info",
+    email: "minht@web.de",
   },
   respondWith: () => {
     return new Response(

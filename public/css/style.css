@@ -1012,7 +1012,7 @@ Contact Section
 /*----------------
 Contact Section
 ------------------*/
-.sub-text {
+.sub-text{
     display: flex;
     flex-direction: column; /* Align children vertically */
     justify-content: center;

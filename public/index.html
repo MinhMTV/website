@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
 
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
 
 </head>
 
@@ -381,7 +382,8 @@
         </div>
         <div class="row">
           <div class="contact-form">
-            <form method="POST" data-static-form-name="contact">
+            <form method="POST"  action="https://api.web3forms.com/submit" >
+              <input type="hidden" name="access_key" value="b1bfbb19-8578-4802-b162-24233764b741">
               <div class="row">
                 <div class="input-group">
                   <input id="i-fullname" type="text" placeholder="Name" class="input-control" required>

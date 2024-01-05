@@ -1077,6 +1077,16 @@ Responsive
         padding: 5px 0;
         word-break: break-all; /* Add some padding for better spacing */
     }
+    .btn.btn-center {
+        display: block; /* Make the button a block element */
+        margin: 20px auto; /* Auto margins for horizontal centering */
+        text-align: center; /* Center the text within the button */
+    }
+
+
+
+
+
     .submit-btn {
         display: flex; /* Enable flexbox */
         justify-content: center; /* Center the button horizontally */

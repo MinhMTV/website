@@ -5,12 +5,12 @@ import { PagesFunction } from "@cloudflare/workers-types";
 export const onRequest: PagesFunction = mailChannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "minhtv@web.de" }],
+      to: [{ name: "ACME Support", email: "minhv90@gmail.com" }],
     },
   ],
   from: {
     name: "ACME Support",
-    email: "minhtv@web.de",
+    email: "minhv90@gmail.com",
   },
   respondWith: () => {
     return new Response(

@@ -11,7 +11,7 @@ async function handleRequest({ request }) {
     const ip = request.headers.get("CF-Connecting-IP");
 
     const formData = await request.formData();
-    const name = formData.get("i-name");
+    const name = formData.get("i-fullname");
     const email = formData.get("i-email");
     const subject = formData.get("i-subject");
     const message = formData.get("i-message");
@@ -56,8 +56,8 @@ async function forwardMessage(name, email, subject, message) {
             "to": [{"email": "manminni@yahoo.de", "name": name}]
         }],
         "from": {
-            "email": "minhv90@gmail.com",
-            "name": "Your Sender Name"
+            "email": "minhtv@web.de",
+            "name": "Minh"
         },
         "subject": subject,
         "content": [{

@@ -25,8 +25,8 @@ async function handleRequest({ request }) {
 
     const sendStatus = await forwardMessage(name, email, subject, message);
     console.error(sendStatus);
-
-    return sendStatus ? new Response("OK", { status: 200 }) : new Response("Error sending email", { status: 500 });
+    return sendStatus;
+    // return sendStatus ? new Response("OK", { status: 200 }) : new Response("Error sending email", { status: 500 });
 }
 
 async function validateToken(ip, token) {
@@ -65,26 +65,27 @@ async function forwardMessage(name, email, subject, message) {
             "value": message
         }]
     });
+    
 
-    return true;
-    // try {
-    //     const response = await fetch(mailchannelsEndpoint, {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: mailBody
-    //     });
 
-    //     if (!response.ok) {
-    //         const errorDetails = await response.text();
-    //         console.error("MailChannels API error response:", errorDetails);
-    //         return false;
-    //     }
+    try {
+        const response = await fetch(mailchannelsEndpoint, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: mailBody
+        });
 
-    //     return true;
-    // } catch (error) {
-    //     console.error("Error sending email through MailChannels:", error);
-    //     return false;
-    // }
+        if (!response.ok) {
+            const errorDetails = await response.text();
+            error = console.error("MailChannels API error response:", errorDetails);
+            return error;
+        }
+
+        return true;
+    } catch (error) {
+        error = console.error("Error sending email through MailChannels:", error);
+        return error;
+    }
 }
 
 

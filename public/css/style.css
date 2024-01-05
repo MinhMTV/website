@@ -8,18 +8,17 @@ Variables
 ------------------------ */
 
 :root {
-    --main-color: #e02f6b;
-    --blue: #0000ff;
-    --blue-dark: #18293c;
-    --orange: #ffa500;
-    --green-yellow: #cddc39;
-    --pink-light: #efa2b4;
-    --cyan-light: #aef1ee;
-    --white: #ffffff;
-    --white-alpha-40: rgba(255, 255, 255, 0.40);
-    --white-alpha-25: rgba(255, 255, 255, 0.25);
-    --backgrop-filter-blur: blur(5px);
-
+    --main-color: #2a3d66; /* Slightly lighter dark blue */
+    --blue: #3b47c9; /* Lighter medium blue */
+    --blue-dark: #1b213a; /* Less intense dark blue */
+    --orange: #ffa500; /* Keeping orange for accents */
+    --green-yellow: #cddc39; /* Muted green for subtle highlights */
+    --pink-light: #6f7dbf; /* Lighter muted purple */
+    --cyan-light: #9ab6e1; /* Brighter light blue */
+    --white: #ffffff; /* White */
+    --white-alpha-40: rgba(255, 255, 255, 0.40); /* Semi-transparent white */
+    --white-alpha-25: rgba(255, 255, 255, 0.25); /* More transparent white */
+    --backgrop-filter-blur: blur(5px); /* Blur effect */
 }
 
 /* ----------------------
@@ -40,7 +39,7 @@ Global Settings
 /* Hintergrundfarbe setzen*/
 body {
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, var(--pink-light), var(--cyan-light));
+    background-image: linear-gradient(to bottom right, var(--blue), var(--white));
     background-attachment: fixed;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;

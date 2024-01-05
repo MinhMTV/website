@@ -66,24 +66,25 @@ async function forwardMessage(name, email, subject, message) {
         }]
     });
 
-    try {
-        const response = await fetch(mailchannelsEndpoint, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: mailBody
-        });
+    return true;
+    // try {
+    //     const response = await fetch(mailchannelsEndpoint, {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: mailBody
+    //     });
 
-        if (!response.ok) {
-            const errorDetails = await response.text();
-            console.error("MailChannels API error response:", errorDetails);
-            return false;
-        }
+    //     if (!response.ok) {
+    //         const errorDetails = await response.text();
+    //         console.error("MailChannels API error response:", errorDetails);
+    //         return false;
+    //     }
 
-        return true;
-    } catch (error) {
-        console.error("Error sending email through MailChannels:", error);
-        return false;
-    }
+    //     return true;
+    // } catch (error) {
+    //     console.error("Error sending email through MailChannels:", error);
+    //     return false;
+    // }
 }
 
 

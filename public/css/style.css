@@ -1008,6 +1008,19 @@ Contact Section
     background-color: var(--main-color);
 }
 
+
+/*----------------
+Contact Section
+------------------*/
+.sub-text {
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Use full viewport height to center vertically */
+    text-align: center;
+}
+
 /*----------------
 Responsive
 ------------------*/

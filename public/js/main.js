@@ -1,12 +1,22 @@
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
     document.querySelector(".main").classList.remove("hidden");
     document.querySelector(".home-section").classList.add("active");
-    /* -------- Page Loader ---------*/
+    // Page Loader
     document.querySelector(".page-loader").classList.add("fade-out");
-    setTimeout(()=>{
+    setTimeout(() => {
         document.querySelector(".page-loader").style.display = "none";
-    },600);
+    }, 600);
+    // Update Profile Image
+    updateProfileImage();
+    // Update About Image
+    updateAboutImage();
+
 });
+
+
+// Add event listener for window resize
+window.addEventListener("resize", updateProfileImage);
+window.addEventListener("resize",updateAboutImage);
 
 
 /* ----------------- Toggle Navbar------------------*/
@@ -110,3 +120,27 @@ function portfolioItemDetails(portfolioItem){
     document.querySelector(".pp-body").innerHTML = portfolioItem.querySelector(".portfolio-item-details").innerHTML;
 }
 
+
+
+function updateProfileImage() {
+        var screenWidth = window.innerWidth;
+        var imgElement = document.querySelector('.home-img .img-box img');
+        
+        if (screenWidth <= 575) {
+            imgElement.src = 'img/small/home/profile-pic-min.jpg'; // Small image for small screens
+        } else {
+            imgElement.src = 'img/large/home/profile-pic.jpg'; // Large image for large screens
+        }
+    }
+
+    // Function to update profile image based on screen width
+function updateAboutImage() {
+    var screenWidth = window.innerWidth;
+    var imgElement = document.querySelector('.about-img .img-box img');
+    
+    if (screenWidth <= 575) {
+        imgElement.src = 'img/small/about/about-pic-min.jpg'; // Small image for small screens
+    } else {
+        imgElement.src = 'img/large/about/about_pic.jpg'; // Large image for large screens
+    }
+}

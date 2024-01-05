@@ -48,7 +48,8 @@ body {
     line-height: 1.5;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
-    padding: 35px 15px;
+    /* padding: 35px 15px; */
+    padding: 20px 20px;
 
 }
 
@@ -564,27 +565,28 @@ Home Section
 ------------------*/
 .home-section {
     /* display: flex; */
-    padding: 120px 0;
+    padding: 80px 0;
 }
 
 .home-section.active {
     display: flex;
 }
 
-/* .home-text{
-    background-color: blue;
+ .home-text{
+    text-align: center;
 }
+/*
 .home-img{
     background-color: green;
 } */
 .home-text,
 .home-img {
     width: 50%;
-    padding: 15px;
+    padding: 5px;
 }
 
 .home-text p {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .home-text h1 {
@@ -604,10 +606,10 @@ Home Section
 }
 
 .home-img .img-box {
-    max-width: 360%;
+    max-width: 250px;
     background-color: var(--white-alpha-25);
     border-radius: 50%;
-    border: 8px solid var(--white-alpha-25);
+    border: 6px solid var(--white-alpha-25);
     margin: auto;
 }
 
@@ -615,6 +617,35 @@ Home Section
     width: 100%;
     border-radius: 50%;
 }
+
+.contact-info-item.home {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right; /* Center-align the content */
+    z-index: 1;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.contact-info-item.home h3{
+    font-size: small;
+}
+.contact-info-item.home .social-links a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    color: var(--main-color);
+    border-radius: 50%;
+    margin: 6px 4px 0 0;
+    transition: all 0.3s ease;
+}
+
+
+
 
 /*----------------
 About Section
@@ -1033,6 +1064,18 @@ Responsive
     .home-text{
         text-align: center;
     }
+    .home-text p {
+        font-size: 20px;
+    }
+    
+    .home-text h1 {
+        font-size: 40px;
+    }
+    
+    .home-text h2 {
+        font-size: 20px;
+
+    }
     .home-img{
         order:-1;
     }
@@ -1047,6 +1090,10 @@ Responsive
     }
 }
 @media(max-width:767px) {
+    .home-img .img-box{
+        max-width: 200px;
+    }
+
     .contact-form,
     .contact-info,
     .about-text,
@@ -1096,7 +1143,9 @@ Responsive
     }
     .home-text h2{
         font-size: 20px;
-
+    }
+    .home-img .img-box{
+        max-width: 150px;
     }
     .pp-header h3{
         font-size: 20px;

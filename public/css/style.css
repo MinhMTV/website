@@ -989,6 +989,7 @@ Contact Section
     margin: 0 0 5px;
 }
 
+
 .contact-info-item .social-links a {
     display: inline-flex;
     align-items: center;
@@ -1055,11 +1056,21 @@ Responsive
         order: -1;
         margin-bottom: 15px;
     } 
-    .contact-info-item{
-        padding: 0;
-        align-items: center;
-        justify-items: center;
-    } 
+    .contact-info-item {
+        text-align: center; /* Center-align the content */
+    }
+
+    .contact-info-item a {
+        display: inline-block; /* Make links inline blocks to center align */
+        padding: 5px 0;
+        word-break: break-all; /* Add some padding for better spacing */
+    }
+    .submit-btn {
+        display: flex; /* Enable flexbox */
+        justify-content: center; /* Center the button horizontally */
+        width: 100%; /* Ensure the container spans the full width */
+        margin-top: 20px; /* Optional: add some space above the button */
+    }    
 }
 @media(max-width:575px) {
     .header .nav-inner ul li a{

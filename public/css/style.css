@@ -1057,6 +1057,8 @@ Responsive
     } 
     .contact-info-item{
         padding: 0;
+        align-items: center;
+        justify-items: center;
     } 
 }
 @media(max-width:575px) {

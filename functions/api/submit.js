@@ -25,8 +25,7 @@ async function handleRequest({ request }) {
 
     const sendStatus = await forwardMessage(name, email, subject, message);
     console.error(sendStatus);
-    return sendStatus;
-    // return sendStatus ? new Response("OK", { status: 200 }) : new Response("Error sending email", { status: 500 });
+    return sendStatus ? new Response("OK", { status: 200 }) : new Response("Error sending email", { status: 500 });
 }
 
 async function validateToken(ip, token) {
@@ -66,8 +65,6 @@ async function forwardMessage(name, email, subject, message) {
         }]
     });
     
-
-
     try {
         const response = await fetch(mailchannelsEndpoint, {
             method: "POST",
